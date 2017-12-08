@@ -8,7 +8,7 @@ for line in handle:
 for index in range(len(banks)):
     banks[index] = int(banks[index])
 
-# banks = [0, 2, 7, 0]
+#banks = [0, 2, 7, 0]
 
 configs = list()
 cycles = 0
@@ -16,9 +16,10 @@ cycles = 0
 config = ""
 for bank in banks:
     config += str(bank)
-
+print("Start cycle is   : " , banks)
 while (True):
     if (config in configs):
+        configs.append(config)
         break;
     else:
         configs.append(config)
@@ -35,6 +36,7 @@ while (True):
         index = (index + 1) % len(banks)
 
     #----------------------------------------------
+    # print("Current cycle is : " , banks)
     cycles +=1
 
     config = ""
@@ -42,3 +44,7 @@ while (True):
         config += str(bank)
 
 print("Total cycles are : " , cycles)
+for index in range(len(configs)):
+    if (config == configs[index]):
+        print("Size of the loop : ",len(configs) - index -1)
+        break;
