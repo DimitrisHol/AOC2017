@@ -1,66 +1,56 @@
-# 16 memory banks
-# each holds any number of blocks
+#opening the file
+handle = open("input.txt")
 
-#16 x bank >> blocks
+for line in handle:
+    banks = line.split()
 
-def distribute():
-    pass
-def maxDict(dict):
+#Converting to ints
+for index in range(len(banks)):
+    banks[index] = int(banks[index])
 
-    maxValue = None
-    maxBank = None
-    for bank in dict:
-        # print("maxValue =" , maxValue , "maxBank = " ,maxBank)
-        # print("bank=",bank , "bankValue" ,dict[bank])
-        if (maxValue is None):
-            maxValue = dict[bank]
-            maxBank = bank
-        elif (dict[bank] > maxValue):
-            maxValue = dict[bank]
-            maxBank = bank
-        #IF THEY HAVE THE SAME # OF BLOCKS, MAX IS THE FIRST ONE
-        elif (dict[bank] == maxValue):
-            maxBank= min(bank, maxBank)
-            maxValue = dict[min(bank, maxBank)]
-    return maxValue
+# banks = [0, 2, 7, 0]
 
-memoryBanks = dict()
-
-memoryBanks["bank0"] = 2
-memoryBanks["bank1"] = 2
-memoryBanks["bank2"] = 2
-memoryBanks["bank3"] = 3
-
-flag = True
 configs = list()
+cycles = 0
 
 config = ""
-for bank in memoryBanks:
-    config += str(memoryBanks[bank])
-configs.append(config)
+for bank in banks:
+    config += str(bank)
 
-print(config)
-print(configs)
+while (True):
+    if (config in configs):
+        break;
+    else:
+        configs.append(config)
+    #----------------------------------------------
+    #Distribute
 
-memoryBanks["bank0"] = 3
-memoryBanks["bank1"] = 3
-memoryBanks["bank2"] = 3
-memoryBanks["bank3"] = 4
+    #----DEBUG----
+    print("Currently the list is : " , banks)
+    #-------------
+    maxBank = banks.index(max(banks))
+    points = banks[maxBank]
+    banks[maxBank] = 0
+    #----DEBUG----
+    print("Position of the max bank is : " , maxBank)
+    print("Points : " , points)
+    #-------------
+    index = (maxBank +1) % len(banks)
 
-#while (flag):
+    while (points > 0):
+        #----DEBUG----
+        print("Points : " , points)
 
-config = ""
-for bank in memoryBanks:
-    config += str(memoryBanks[bank])
+        #-------------
+        banks[index] +=1
+        points -=1
+        index = (index + 1) % len(banks)
 
-print(configs)
-if (config in configs):
-    flag = False
-else:
-    configs.append(config)
+    #----------------------------------------------
+    cycles +=1
 
-#distribute(memoryBanks)
+    config = ""
+    for bank in banks:
+        config += str(bank)
 
-print(config)
-print(configs)
-print(flag)
+print(cycles)
