@@ -24,24 +24,12 @@ while (True):
         configs.append(config)
     #----------------------------------------------
     #Distribute
-
-    #----DEBUG----
-    print("Currently the list is : " , banks)
-    #-------------
     maxBank = banks.index(max(banks))
     points = banks[maxBank]
     banks[maxBank] = 0
-    #----DEBUG----
-    print("Position of the max bank is : " , maxBank)
-    print("Points : " , points)
-    #-------------
     index = (maxBank +1) % len(banks)
 
     while (points > 0):
-        #----DEBUG----
-        print("Points : " , points)
-
-        #-------------
         banks[index] +=1
         points -=1
         index = (index + 1) % len(banks)
@@ -53,4 +41,4 @@ while (True):
     for bank in banks:
         config += str(bank)
 
-print(cycles)
+print("Total cycles are : " , cycles)
