@@ -23,11 +23,11 @@ def checkOP(op ,a ,b):
 
 handle = open("input.txt")
 values = dict()
+maxValue = None
 
 for line in handle:
     line = line.rstrip().split()
     line[2] = int(line[2])
-
 
     try:
         values[line[0]]
@@ -40,15 +40,16 @@ for line in handle:
         values[line[4]] = 0
         #THIS IS NOT DEFINED
 
-    # print(values[line[4]], line[5] , line[6])
-    # print(checkOP(line[5], values[line[4]] , int(line[6])))
-    # print (line)
     if line[1] == "inc":
         if (checkOP(line[5], values[line[4]] , int(line[6]))):
             values[line[0]] += line[2]
     else:
         if (checkOP(line[5], values[line[4]] , int(line[6]))):
             values[line[0]] -= line[2]
+    if maxValue == None:
+        maxValue = values[line[0]]
+    elif maxValue < values[line[0]]:
+        maxValue = values[line[0]]
 
 
 # print(values)
@@ -59,11 +60,5 @@ for value in values:
     elif max < values[value]:
         max = values[value]
 print(max)
+print(maxValue)
 handle.close()
-
-
-
-# b inc 5 if a > 1
-# a inc 1 if b < 5
-# c dec -10 if a >= 1
-# c inc -20 if c == 10
