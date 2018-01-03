@@ -11,3 +11,5 @@ for line in handle:
             break;
     count +=1
 print(count)
+
+handle.close()

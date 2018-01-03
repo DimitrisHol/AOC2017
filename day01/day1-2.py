@@ -59,3 +59,6 @@ for index in range(length-1):
 
 print ("Final sum = " ,sum)
 print("----------------------------------------------")
+
+
+handle.close()

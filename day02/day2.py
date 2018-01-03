@@ -12,3 +12,4 @@ for line in handle:
     checksum = max(newIntList) - min(newIntList)
     sum += checksum
 print(sum)
+handle.close()

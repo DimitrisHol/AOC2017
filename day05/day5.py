@@ -28,3 +28,6 @@ while (index <len(lst)):
     #print(lst)
 
 print(steps)
+
+
+handle.close()

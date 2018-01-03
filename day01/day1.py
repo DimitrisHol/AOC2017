@@ -36,3 +36,5 @@ print (inp[2135] , inp[0])
 print (len(inp))
 print ("Final sum = " ,sum)
 print("----------------------------------------------")
+
+handle.close()

@@ -57,3 +57,5 @@ print("###############")
 print("children of arqoys")
 print("###############")
 for child in children["arqoys"]: print(child , weights[child])
+
+handle.close()

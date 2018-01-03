@@ -48,3 +48,5 @@ for index in range(len(configs)):
     if (config == configs[index]):
         print("Size of the loop : ",len(configs) - index -1)
         break;
+
+handle.close()

@@ -14,3 +14,5 @@ for name in  names:
         root = name
 
 print (root)
+
+handle.close()

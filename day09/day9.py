@@ -36,3 +36,5 @@ for character in x:
 print(x)
 print("Score:" ,count)
 print("Removed chars: " , removedChars)
+
+handle.close()

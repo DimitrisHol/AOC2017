@@ -26,3 +26,5 @@ for line in handle:
     else:
         sum +=num2/num1
 print(sum)
+
+handle.close()
