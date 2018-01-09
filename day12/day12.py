@@ -1,42 +1,47 @@
-import sys
+from collections import *
+
+#Special thanks to Arnav Sastry
+# https://www.youtube.com/watch?time_continue=179&v=_nI5uCcBTcs
+
+#For teaching me with his video about lambda, map and the solution to part1. :) Cheers!
+
 handle = open("input.txt")
 
-dictionary = dict()
+def part1():
+    q = [0]
+    vis = set()
+    while q:
+        a = q.pop()
+        for b in graph[a]:
+            if b not in vis:
+                vis.add(b)
+                q.append(b)
+    print("Length of Group \"0\" is : " , len(vis))
 
+def part2():
+    ans = 0
+    vis = set()
+    for g in graph:
+        if g in vis:
+            continue
+        ans +=1
+        q = [g]
+        while q:
+            a = q.pop()
+            for b in graph[a]:
+                if b not in vis:
+                    vis.add(b)
+                    q.append(b)
+    print("Nubmer of groups : " , ans)
+
+graph = defaultdict(list)
 for line in handle:
-    line = line.rstrip()
-    line = line.replace("," , "")
+    words = line.rstrip().split()
+    a = int(words[0])
+    bs = map (lambda x: int(x.strip(",")) , words[2:])
+    for b in bs:
+        graph[a].append(b)
 
-    tempList = list()
-    tempList = line.split()
-    tempList.remove("<->")
-
-    dictionary[tempList[0]] = tempList[1:]
-
-goal = ["0"]
-for key in dictionary: # 0 , 1 ,2 , 3, 4, 5,
-    flag = False;
-
-    if key in goal:
-        print("Key is in goal!")
-        print("Key is : " , key , "Goal is : " , goal)
-        flag = True
-    if flag != True:
-        for program in dictionary[key]:
-            if program in goal:
-                flag = True
-
-    if flag:
-        if key not in goal:
-            goal.append(key)
-        for program in dictionary[key]:
-            if program not in goal:
-                goal.append(program)
-
-    print("Goal is now : " , goal)
-
-print(goal)
-print(len(goal))
-
-
+part1()
+part2()
 handle.close()
