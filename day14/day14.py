@@ -83,14 +83,16 @@ def part2():
     for i in range(128):
         for j in range(128):
             if (grid[i][j] == 1 and grid[i][j] not in vis):
+                pass
 
 
  #-------------------------------- ACTUAL PROGRAM IS HERE -------------------------#
-handle = open("inputX.txt")
+handle = open("input.txt")
 inp = handle.read().rstrip()
-# part1()
-part2()
+part1()
+# part2()
 
 handle.close()
+
 
 #-------------------------------- ACTUAL PROGRAM IS HERE -------------------------#

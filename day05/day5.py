@@ -5,7 +5,7 @@ for line in handle:
 
 
 
-#lst = [0, 3 , 0 , 1 , -3 ]
+lst = [0, 3 , 0 , 1 , -3 ]
 #print(lst)
 index = 0
 steps = 0
@@ -13,7 +13,7 @@ steps = 0
 while (index <len(lst)):
 
     #-----PART 1 -----#
-    #lst[index] +=1
+    # lst[index] +=1
     #-----PART 1 -----#
 
     #-----PART 2 -----#
